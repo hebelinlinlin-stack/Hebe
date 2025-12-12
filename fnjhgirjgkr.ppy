@@ -1,0 +1,37 @@
+import streamlit as st
+import streamlit.components.v1 as components
+
+st.set_page_config(page_title="Golf Game", layout="wide")
+
+if st.button("Start Game"):
+    GAME_HTML = r'''
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html,body{margin:0;padding:0;height:100%;background:#76b852;overflow:hidden;}
+#gameCanvas{display:block;margin:0 auto;background:linear-gradient(#7ec850,#4aa02c);touch-action:none;}
+#overlay{position:absolute;left:10px;top:10px;font-family:Arial,Helvetica,sans-serif;color:white;font-size:20px;}
+#stopBtn{position:absolute;right:20px;top:20px;padding:10px 20px;background:black;color:white;border-radius:8px;cursor:pointer;font-family:Arial;}
+</style>
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+<div id="overlay"></div>
+<div id="stopBtn">STOP</div>
+<script>
+(function(){
+const canvas=document.getElementById('gameCanvas');
+const ctx=canvas.getContext('2d');
+let DPR=window.devicePixelRatio||1;
+let canvasW,canvasH;
+
+function resize(){
+  canvasW=Math.min(window.innerWidth,1400);
+  canvasH=Math.min(window.innerHeight-20,800);
+  canvas.style.width=canvasW+'px';
+  canvas.style.height=canvasH+'px';
+  canvas.width=Math.floor(canvasW*DPR);
+  canvas.height=Math.floor(canvasH*DPR);
+  ctx.set
